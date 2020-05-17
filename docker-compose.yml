@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    build: 
+        context: .
+        dockerfile: Dockerfile-api
+    command: >
+        gunicorn -b 0.0.0.0:4500
+        --access-logfile -
+        --reload
+        "app:app"
+    env_file: 
+        - ./api/.env
+    volumes: 
+        - ./api/:/api/
+        - ./models/:/models/
+    ports: 
+        - 4500:4500
