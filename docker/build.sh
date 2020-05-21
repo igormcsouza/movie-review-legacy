@@ -1,1 +1,1 @@
-docker build .. -t igormcsouza/ml:text-classification
+docker build .. -f Dockerfile-classifier -t igormcsouza/ml:text-classification
