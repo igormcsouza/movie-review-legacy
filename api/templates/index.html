@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
-    <title>Text Sentiment</title>
-</head>
-<body>
-    <h1> Hello! DUDE! </h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block body %}
+    <div id="container">
+        <div id="content">
+            <form action="/resolve" method="POST">
+                <h1> Comentários dos Filmes! </h1>
+                <div id="movie-image">
+                    <img 
+                        src="{{ url_for('static', filename='img/hpeapf.jpeg') }}" 
+                        alt="Harry Potter e a Pedra Filosofal"
+                        width="200"
+                        height="300"
+                    >
+                </div>
+                {% if data.reviewresponse == 'yet' %}
+                    <p>Faça uma review do filme acima, diga seus comentários!</p>
+                    <textarea id="input-text" name="review"> Digite seu comentário aqui. </textarea>
+                    <div id="submit"><input id="input-submit" type="submit"></div>
+                {% else %}
+                    {{ data.reviewresponse }}
+                    <button><a href="/">Voltar</a></button>
+                {% endif %}
+            </form>
+        </div> 
+    </div>
+{% endblock %}
