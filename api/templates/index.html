@@ -18,8 +18,12 @@
                     <textarea id="input-text" name="review"> Digite seu comentário aqui. </textarea>
                     <div id="submit"><input id="input-submit" type="submit"></div>
                 {% else %}
-                    {{ data.reviewresponse }}
-                    <button><a href="/">Voltar</a></button>
+                    <div id="response">
+                        <h2>O teor de seu review foi: {{ data.reviewresponse }}</h2>
+                        <div id="submit">
+                            <button style="height: fit-content;"><a href="/">Voltar</a></button>
+                        </div>
+                    </div>
                 {% endif %}
             </form>
         </div> 

@@ -9,5 +9,6 @@ RUN pip install scikit-learn==0.22.2
 WORKDIR /api
 
 COPY api /api
+COPY models /models
 
-CMD gunicorn -b 0.0.0.0:4500 --access-logfile - "app:app"
+CMD gunicorn app:app
