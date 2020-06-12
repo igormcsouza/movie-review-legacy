@@ -1,1 +1,0 @@
-docker build .. -f Dockerfile-classifier -t igormcsouza/ml:text-classification

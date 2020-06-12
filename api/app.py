@@ -22,4 +22,8 @@ def main():
 def resolve():
     review = request.form.get('review')
     data['reviewresponse'] = make_a_prediction(review)
+    with open('newbase.csv', 'a+') as f:
+        f.writelines("{},{},{}\n".format(
+            str(review), data['reviewresponse'], 'yet'
+        ))
     return render_template('index.html', data=data)
