@@ -1,5 +1,6 @@
 import pickle
 from joblib import load
+import random
 from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
@@ -11,12 +12,26 @@ def make_a_prediction(phrase):
 
     return 'pos' if regressor.predict(vectorizer.transform([phrase])) else 'neg'
 
-data=dict(reviewresponse='', review='', truth='')
+data=dict(reviewresponse='', review='', truth='', movie_banner_path=1)
+
+movie_banner_list = [
+    'static/img/1.png',
+    'static/img/2.png',
+    'static/img/3.png',
+    'static/img/4.png',
+    'static/img/5.png',
+    'static/img/6.png',
+    'static/img/7.png',
+    'static/img/8.png',
+    'static/img/9.png',
+    'static/img/10.png',
+]
 
 @app.route('/')
 def main(): 
     data['reviewresponse'] = 'yet'
     data['truth'] = 'yet'
+    data['movie_banner_path'] = random.choice(movie_banner_list)
     return render_template('index.html', data=data)
 
 @app.route('/resolve', methods=['POST'])
