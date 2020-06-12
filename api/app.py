@@ -9,21 +9,30 @@ def make_a_prediction(phrase):
     regressor = load('/models/sklearn-logistc-regressor-model.joblib')
     vectorizer = pickle.load(open("/models/vectorizer.pickle", "rb"))
 
-    return 'Positivo' if regressor.predict(vectorizer.transform([phrase])) else 'Negativo'
+    return 'pos' if regressor.predict(vectorizer.transform([phrase])) else 'neg'
 
-data=dict()
+data=dict(reviewresponse='', review='', truth='')
 
 @app.route('/')
 def main(): 
     data['reviewresponse'] = 'yet'
+    data['truth'] = 'yet'
     return render_template('index.html', data=data)
 
 @app.route('/resolve', methods=['POST'])
 def resolve():
-    review = request.form.get('review')
-    data['reviewresponse'] = make_a_prediction(review)
+    data['review'] = request.form.get('review')
+    data['reviewresponse'] = make_a_prediction(data['review'])
+
+    return render_template('index.html', data=data)
+
+@app.route('/store', methods=['POST'])
+def store():
+    data['truth'] = request.form.get('truth')
+
     with open('newbase.csv', 'a+') as f:
         f.writelines("{},{},{}\n".format(
-            str(review), data['reviewresponse'], 'yet'
+            data['review'], data['reviewresponse'], data['truth']
         ))
+    
     return render_template('index.html', data=data)

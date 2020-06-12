@@ -17,15 +17,38 @@
                     <p>Faça uma review do filme acima, diga seus comentários!</p>
                     <textarea id="input-text" name="review"> Digite seu comentário aqui. </textarea>
                     <div id="submit"><input id="input-submit" type="submit"></div>
-                {% else %}
+                {% elif data.truth == 'yet' %}
                     <div id="response">
-                        <h2>O teor de seu review foi: {{ data.reviewresponse }}</h2>
-                        <div id="submit">
-                            <button style="height: fit-content;"><a href="/">Voltar</a></button>
-                        </div>
+                        <h2>
+                            O classificador indicou o review como: 
+                            {% if data.reviewresponse == 'pos' %}
+                                Positivo
+                            {% elif data.reviewresponse == 'neg' %}
+                                Negativo
+                            {% else %}
+                                Não entendido
+                            {% endif %}
+                        </h2>
                     </div>
-                {% endif %}
-            </form>
+                </form>
+                <div id="response">
+                    <form action="/store" method="POST">
+                        <h2>Você pode me confirmar qual era o teor de seu review?</h2>
+                        <select name="truth">
+                            <option value="pos">Positivo</option>
+                            <option value="neg">Negativo</option>
+                        </select>
+                        <div id="submit"><input id="input-submit" type="submit"></div>
+                    </form>
+                </div>
+            {% else %}
+                <div id="response">
+                    <h1> Obrigado </h1>
+                    <div id="submit">
+                        <button style="height: fit-content;"><a href="/">Voltar</a></button>
+                    </div>
+                </div>
+            {% endif %}
         </div> 
     </div>
 {% endblock %}
