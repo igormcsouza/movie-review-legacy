@@ -1,2 +1,12 @@
-oi,pos,pos
-ODIEI!!!,pos,neg
+"Esse filme é muito bom!!",pos,pos
+"Eu adorei esse filme, ele fala sobre muitas questões sociais interessantes, principalmente o final envolvente quando o robo se mostra mais humana que os humanos da época!",pos,pos
+"Não assisti! Mas deve ser besta!",neg,neg
+"Horrível!",pos,neg
+"Odiei esse filme, muito ruim msm!",neg,neg
+"Horrível!",neg,neg
+"Ótimo!",neg,pos
+"Maravilhoso! Amei!",neg,pos
+"Eu amei esse filme, ele é muito bom! A autora está de parabéns!",pos,pos
+"Maravilhoso! Adorei mesmo!",neg,pos
+"Que filme ruim! Muito complicado de entender!",neg,neg
+"Este filme foi o melhor que eu já vi! Sensacional!",pos,pos

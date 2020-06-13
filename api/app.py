@@ -10,7 +10,7 @@ def make_a_prediction(phrase):
     regressor = load('/models/sklearn-logistc-regressor-model.joblib')
     vectorizer = pickle.load(open("/models/vectorizer.pickle", "rb"))
 
-    return 'pos' if regressor.predict(vectorizer.transform([phrase])) else 'neg'
+    return 'pos' if regressor.predict(vectorizer.transform([phrase]))[0] else 'neg'
 
 data=dict(reviewresponse='', review='', truth='', movie_banner_path=1)
 
@@ -47,7 +47,7 @@ def store():
 
     with open('newbase.csv', 'a+') as f:
         f.writelines("{},{},{}\n".format(
-            data['review'], data['reviewresponse'], data['truth']
+            '"'+ data['review'] + '"', data['reviewresponse'], data['truth']
         ))
     
     return render_template('index.html', data=data)
