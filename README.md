@@ -11,6 +11,10 @@ To push containers to production is very simple with heroku containers. Below is
     docker push registry.heroku.com/<app>/<process_name>
     heroku container:release <process_name> -a <app>
 
+I made an script to run the above commands quickly! Just type the bellow on the terminal.
+
+    sh heroku.sh docker_movie_web smart-movie-review web
+
 ## Dataset
 
 https://www.kaggle.com/luisfredgs/imdb-ptbr
