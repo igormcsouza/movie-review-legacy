@@ -1,3 +1,13 @@
+This project was discontinued! A very Big one started then!! :) It is the MOVIE REVIEW PLUS.
+
+On the new project we now have our Frontend, Backend and Package splitted to be easier to reproduce it latter!
+
+You can find out more about the new project on those repositories:
+
+https://github.com/igormcsouza/movie-review-plus-frontend
+https://github.com/igormcsouza/movie-review-plus-backend
+https://github.com/igormcsouza/movie-review-plus-package
+
 # Text Sentiment Recognition Online
 
 The idea is to implement a natural language processing model to classify wheter the review of a movie is Positive or Negative, then, load it online to get peoples review and classify it.
